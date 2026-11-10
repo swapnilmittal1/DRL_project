@@ -1,0 +1,28 @@
+# Data preparation shared by all experiments. Changing anything here changes every split manifest.
+
+dataset_name: argilla/ultrafeedback-binarized-preferences-cleaned
+dataset_revision: 770076f077c4c5e298498fa32f804857f46d5134
+
+# Tokenizer used for length features and the overlong filter; must match the policy model.
+tokenizer_name: Qwen/Qwen2.5-1.5B-Instruct
+tokenizer_revision: 989aa7980e4cf806f80c7fef2b1adb7bc71aa306
+
+# Pairs whose full chat-templated sequence (prompt + longer response) exceeds this are dropped,
+# so DPO never trains on truncated responses. Must equal dpo.max_length in configs/base.yaml.
+max_total_tokens: 2048
+
+split:
+  seed: 0
+  fractions: {train: 0.90, validation: 0.05, test: 0.05}
+
+buckets:
+  quantiles: [0.3333333333333333, 0.6666666666666666]   # computed on the train split only
+
+inspection:
+  n_examples: 12
+  seed: 0
+
+outputs:
+  splits_dir: data/splits            # tracked: manifests, SHA256SUMS, prep_metadata.json
+  features_path: data/processed/pairs_features.parquet   # git-ignored, regenerable
+  inspection_report: reports/example_inspection.md

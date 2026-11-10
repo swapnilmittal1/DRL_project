@@ -1,0 +1,5 @@
+# E2: largest margins (margin > t2, train-only 2/3 quantile), source-matched to E1.
+inherit: ../base.yaml
+experiment_id: E2_high_margin
+data:
+  condition: E2_high_margin

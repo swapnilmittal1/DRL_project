@@ -1,0 +1,5 @@
+,E1_random,E2_high_margin,E3_medium_margin,E4_low_margin
+E1_random,100,0,0,1
+E2_high_margin,0,100,0,0
+E3_medium_margin,0,0,100,0
+E4_low_margin,1,0,0,100

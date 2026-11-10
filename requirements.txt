@@ -1,0 +1,23 @@
+# Direct dependencies, pinned. Verified to install together on Python 3.11 (pip check clean).
+# Full transitive lock: requirements-lock-macos-arm64.txt (macOS arm64; regenerate a Linux/CUDA lock on the training machine with `pip freeze --exclude-editable`).
+#
+# numpy and scipy are pinned to the last releases that support Python 3.11
+# (numpy>=2.5 and scipy>=1.18 require Python >=3.12).
+
+torch==2.15.0
+transformers==5.22.2
+trl==1.17.1
+peft==0.21.2
+accelerate==1.15.0
+datasets==5.2.0
+numpy==2.4.6
+pandas==3.1.1
+scipy==1.17.1
+matplotlib==3.11.2
+seaborn==0.13.2
+pyyaml==6.0.3
+pytest==9.2.0
+
+# Optional 4-bit QLoRA. Only installed on Linux; only used when CUDA is available
+# and `quantization.load_in_4bit: true` is set in the config.
+bitsandbytes==0.50.2; sys_platform == "linux"

@@ -1,0 +1,59 @@
+# Shared settings for all experiments. Experiment files override fields via `inherit: ../base.yaml`.
+# Values marked UNTUNED are starting points that must be fixed (and committed) before final runs.
+
+experiment_id: base
+run_type: final          # smoke | pilot | final. Sets pairs per condition; outputs go to results/<run_type>/
+seed: 42                 # training seed (model init of LoRA weights, data order). Override with --seed.
+train: true
+
+model:
+  name_or_path: Qwen/Qwen2.5-1.5B-Instruct
+  revision: 989aa7980e4cf806f80c7fef2b1adb7bc71aa306   # pinned Hub commit
+  dtype: auto            # auto (bf16 on CUDA if supported, else fp32) | bfloat16 | float32
+  attn_implementation: sdpa
+
+quantization:
+  load_in_4bit: false    # QLoRA via bitsandbytes; CUDA only. Rejected on MPS/CPU.
+
+data:
+  prep_config: configs/data/prep.yaml            # dataset/revision, cleaning, splits, train-only thresholds
+  selection_config: configs/data/selection.yaml  # sizes per run_type (smoke 100 / pilot 500 / final 4000), seed, eval set
+  condition: null        # E1_random | E2_high_margin | E3_medium_margin | E4_low_margin
+
+lora:                    # UNTUNED (initial exploratory settings, not from Ivison et al.)
+  r: 16
+  lora_alpha: 32
+  lora_dropout: 0.0
+  target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+
+dpo:                     # passed to trl.DPOConfig (TRL 1.17.1 field names)
+  beta: 0.1              # UNTUNED
+  loss_type: [sigmoid]   # standard DPO loss; never changed between conditions
+  max_length: 1024       # UNTUNED. < prep max_total_tokens (2048): longer pairs are truncated (keep_start) and
+                         # pairs whose prompt alone is >= max_length are dropped by TRL; both are counted per run.
+  truncation_mode: keep_start
+
+training:                # passed to trl.DPOConfig / transformers.TrainingArguments
+  num_train_epochs: 1            # UNTUNED
+  learning_rate: 5.0e-6          # UNTUNED (LoRA usually needs a higher LR than full fine-tuning)
+  lr_scheduler_type: cosine
+  warmup_steps: 0.1              # float < 1 is a ratio of total steps in transformers 5
+  per_device_train_batch_size: 1
+  per_device_eval_batch_size: 1
+  gradient_accumulation_steps: 8   # effective batch 8 pairs on one device
+  gradient_checkpointing: true
+  logging_steps: 1
+  eval_strategy: steps
+  eval_steps: 0.25               # float < 1 = fraction of total steps (4 evaluations per run)
+  save_strategy: "no"            # adapter is saved once at the end
+  report_to: none
+
+checks:
+  max_dropped_pairs_final: 0     # final runs fail if TRL would drop any pair (keeps N equal across conditions)
+  verify_reload: true            # reload the saved adapter on a fresh base model and compare log-probs
+
+# Applied by `train_dpo.py --smoke-test` on top of everything above (recorded in resolved_config.yaml).
+smoke_test:
+  run_type: smoke                # 100-pair manifests
+  data: {eval_limit: 16}
+  training: {max_steps: 12, eval_steps: 6}   # 12 x 8 = 96 pairs, <= 20 optimizer steps

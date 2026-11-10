@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dpo-margin"
+version = "0.1.0"
+description = "Preference-score-margin data selection for DPO (extension of Ivison et al., NeurIPS 2024)"
+requires-python = ">=3.11,<3.12"
+# Dependencies are pinned in requirements.txt; install that first.
+dependencies = []
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "network: needs Hugging Face Hub access (downloads a tiny test model)",
+]
+filterwarnings = ["ignore::DeprecationWarning"]

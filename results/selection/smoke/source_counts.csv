@@ -1,0 +1,9 @@
+source,E1_random,E2_high_margin,E3_medium_margin,E4_low_margin
+evol_instruct,16,16,16,16
+false_qa,4,4,4,4
+flan_v2_cot,5,5,5,5
+flan_v2_flan2021,1,1,1,1
+flan_v2_niv2,25,25,25,25
+flan_v2_p3,3,3,3,3
+sharegpt,31,31,31,31
+ultrachat,15,15,15,15

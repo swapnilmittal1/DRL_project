@@ -1,0 +1,4 @@
+# E0: original instruction-tuned model, no DPO. Evaluated as-is; nothing is trained.
+inherit: ../base.yaml
+experiment_id: E0_no_dpo
+train: false

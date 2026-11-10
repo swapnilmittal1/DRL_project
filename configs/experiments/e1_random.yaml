@@ -1,0 +1,5 @@
+# E1: source-stratified random sample of the whole train pool.
+inherit: ../base.yaml
+experiment_id: E1_random
+data:
+  condition: E1_random

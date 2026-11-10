@@ -1,0 +1,31 @@
+# Pipeline smoke test: tiny random-weight Qwen2 model, real data, a few steps. Runs on CPU/MPS/CUDA.
+# Its outputs are meaningless as results; they only show the code path works.
+inherit: ../base.yaml
+experiment_id: smoke_tiny
+run_type: smoke
+
+model:
+  name_or_path: trl-internal-testing/tiny-Qwen2ForCausalLM-2.5
+  revision: edca82771e1fad8f0b7ce110ffe770c682043fec
+  dtype: float32
+
+data:
+  condition: E2_high_margin   # 100-pair smoke manifest (run_type: smoke)
+  eval_limit: 8               # evaluate on the first 8 pairs of the shared validation subset
+
+lora:
+  r: 4
+  lora_alpha: 8
+  target_modules: [q_proj, v_proj]
+
+dpo:
+  max_length: 256
+
+training:
+  max_steps: 4
+  per_device_train_batch_size: 2
+  per_device_eval_batch_size: 2
+  gradient_accumulation_steps: 1
+  gradient_checkpointing: false
+  logging_steps: 1
+  eval_steps: 2

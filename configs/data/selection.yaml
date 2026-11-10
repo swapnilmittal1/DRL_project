@@ -1,0 +1,27 @@
+# Controlled preference-pair selection. Reads ONLY data/splits/train.csv.
+# Margin buckets use the train-only quantile thresholds from prep (configs/data/prep.yaml):
+#   low: 0 < margin <= t1   medium: t1 < margin <= t2   high: margin > t2
+
+seed: 0                  # one seed shared by every condition
+match_source: true       # every condition gets identical per-source counts (quotas from the train pool)
+
+# Pairs per condition, keyed by run_type.
+sizes:
+  smoke: 100
+  pilot: 500
+  final: 4000
+
+# condition -> margin bucket (null = whole train pool)
+conditions:
+  E1_random: null
+  E2_high_margin: high
+  E3_medium_margin: medium
+  E4_low_margin: low
+
+# Fixed validation subset for DPO eval metrics during training; identical for every condition.
+# Built separately from selection and never used to choose training pairs.
+eval:
+  size: 200
+  seed: 0
+
+manifest_root: data/manifests

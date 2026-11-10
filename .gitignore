@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Caches (Hugging Face, torch, datasets)
+.cache/
+hf_cache/
+.hf_cache/
+.huggingface/
+wandb/
+
+# Downloaded datasets (manifests in data/manifests/ ARE tracked)
+data/raw/
+data/processed/
+*.arrow
+*.parquet
+
+# Model weights and checkpoints
+adapters/*
+!adapters/.gitkeep
+checkpoint-*/
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.ckpt
+*.gguf
+
+# Logs and smoke-test outputs (final run metadata under results/final/ IS tracked)
+logs/*
+!logs/.gitkeep
+results/smoke/
+data/manifests/smoke/
+results/**/adapter/
+results/**/trainer/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/

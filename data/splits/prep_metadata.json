@@ -1,0 +1,95 @@
+{
+  "bucket_counts": {
+    "test": {
+      "high": 962,
+      "low": 1382,
+      "medium": 661
+    },
+    "train": {
+      "high": 17812,
+      "low": 24585,
+      "medium": 12214
+    },
+    "validation": {
+      "high": 1018,
+      "low": 1414,
+      "medium": 643
+    }
+  },
+  "bucket_quantiles": [
+    0.3333333333333333,
+    0.6666666666666666
+  ],
+  "bucket_rule": "low: margin <= t1; medium: t1 < margin <= t2; high: margin > t2",
+  "bucket_thresholds_from_train": [
+    0.75,
+    1.5
+  ],
+  "dataset_name": "argilla/ultrafeedback-binarized-preferences-cleaned",
+  "dataset_revision": "770076f077c4c5e298498fa32f804857f46d5134",
+  "dropped_by_reason": {
+    "duplicate_normalized_prompt": 36,
+    "empty_chosen": 1,
+    "empty_prompt": 0,
+    "empty_rejected": 8,
+    "identical_responses": 62,
+    "malformed_rating": 0,
+    "malformed_structure": 0,
+    "non_positive_margin": 0,
+    "overlong": 119
+  },
+  "duplicates": {
+    "duplicate_groups": 33,
+    "groups_differing_only_after_normalization": 22,
+    "rows_dropped": 36,
+    "rows_in_duplicate_groups": 69
+  },
+  "inspection_checks": {
+    "distinct_responses": 12,
+    "n": 12,
+    "shared_prompt": 12,
+    "trl_prompt_once": 12
+  },
+  "manifest_sha256": {
+    "dropped.csv": "51dc8d18572605880c8d26f53b6d5b181c216955c01df6026bbcda9f23adaccf",
+    "test.csv": "9918f040bba400ce6cb57c82872986711be80632c96432003362530abc9b1244",
+    "train.csv": "458c6aaaf6d6703b59067a92745f245c253a72b5184bc0cb29654373a7b3d80e",
+    "validation.csv": "4955bbd2d7134a522822eb041e50e583d1586a250182f8f35204418e83b7618d"
+  },
+  "max_total_tokens": 2048,
+  "n_dropped": 226,
+  "n_kept": 60691,
+  "n_raw": 60917,
+  "schema": {
+    "chosen": "List({'content': Value('string'), 'role': Value('string')})",
+    "chosen-model": "Value('string')",
+    "chosen-rating": "Value('float64')",
+    "prompt": "Value('string')",
+    "rejected": "List({'content': Value('string'), 'role': Value('string')})",
+    "rejected-model": "Value('string')",
+    "rejected-rating": "Value('float64')",
+    "source": "Value('string')"
+  },
+  "split_fractions": {
+    "test": 0.05,
+    "train": 0.9,
+    "validation": 0.05
+  },
+  "split_pairs": {
+    "test": 3005,
+    "train": 54611,
+    "validation": 3075
+  },
+  "split_seed": 0,
+  "structure_audit": {
+    "chosen_rejected_same_user_turn": 60917,
+    "identical_assistant_responses": 62,
+    "n_rows": 60917,
+    "turn_patterns": {
+      "['user', 'assistant'] / ['user', 'assistant']": 60917
+    },
+    "user_turn_equals_prompt": 60917
+  },
+  "tokenizer_name": "Qwen/Qwen2.5-1.5B-Instruct",
+  "tokenizer_revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
+}

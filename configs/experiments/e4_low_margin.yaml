@@ -1,0 +1,5 @@
+# E4: smallest strictly positive margins (0 < margin <= t1, train-only 1/3 quantile), source-matched to E1.
+inherit: ../base.yaml
+experiment_id: E4_low_margin
+data:
+  condition: E4_low_margin
