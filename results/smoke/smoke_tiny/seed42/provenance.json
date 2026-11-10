@@ -1,0 +1,41 @@
+{
+  "timestamp_utc": "2026-11-10T00:22:40.631167+00:00",
+  "argv": [
+    "scripts/train_dpo.py",
+    "--config",
+    "configs/smoke/smoke_tiny.yaml",
+    "--overwrite"
+  ],
+  "python": "3.11.5",
+  "platform": "macOS-26.5.2-arm64-arm-64bit",
+  "git": {
+    "commit": null,
+    "dirty": true
+  },
+  "packages": {
+    "torch": "2.15.0",
+    "transformers": "5.22.2",
+    "trl": "1.17.1",
+    "peft": "0.21.2",
+    "accelerate": "1.15.0",
+    "datasets": "5.2.0",
+    "numpy": "2.4.6",
+    "pandas": "3.1.1",
+    "scipy": "1.17.1",
+    "matplotlib": "3.11.2",
+    "seaborn": "0.13.2",
+    "pyyaml": "6.0.3",
+    "pytest": "9.2.0",
+    "bitsandbytes": null
+  },
+  "device": {
+    "backend": "mps",
+    "name": "Apple Silicon GPU (MPS)",
+    "total_memory_gb": null,
+    "device_count": 1,
+    "bf16": true,
+    "fp16": true,
+    "tf32": false
+  },
+  "allow_dirty": false
+}

@@ -1,0 +1,35 @@
+{
+  "python": "3.11.5",
+  "python_executable": "/Users/swapnilmittal/DRL_project/.venv/bin/python",
+  "packages": {
+    "torch": "2.15.0",
+    "transformers": "5.22.2",
+    "trl": "1.17.1",
+    "peft": "0.21.2",
+    "accelerate": "1.15.0",
+    "datasets": "5.2.0",
+    "numpy": "2.4.6",
+    "pandas": "3.1.1",
+    "scipy": "1.17.1",
+    "matplotlib": "3.11.2",
+    "seaborn": "0.13.2",
+    "pyyaml": "6.0.3",
+    "pytest": "9.2.0",
+    "bitsandbytes": null
+  },
+  "device": {
+    "backend": "mps",
+    "name": "Apple Silicon GPU (MPS)",
+    "total_memory_gb": null,
+    "device_count": 1,
+    "bf16": true,
+    "fp16": true,
+    "tf32": false
+  },
+  "torch_cuda_build": null,
+  "mps_built": true,
+  "system_ram_gb": 16.0,
+  "bitsandbytes_installed": false,
+  "trl_api_problems": [],
+  "failures": []
+}

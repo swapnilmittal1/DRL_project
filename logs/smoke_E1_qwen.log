@@ -1,0 +1,38 @@
+W1109 19:47:39.544000 23213 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[E1_random] backend=mps dtype=bfloat16 qlora=False train=100 eval=16 -> results/smoke/E1_random/seed42
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 5106.82it/s]
+Dropping fully truncated examples from train dataset:   0%|          | 0/100 [00:00<?, ? examples/s]Dropping fully truncated examples from train dataset: 100%|██████████| 100/100 [00:00<00:00, 14956.15 examples/s]
+Dropping fully truncated examples from eval dataset:   0%|          | 0/16 [00:00<?, ? examples/s]Dropping fully truncated examples from eval dataset: 100%|██████████| 16/16 [00:00<00:00, 7666.96 examples/s]
+NOTE: max_length=1024: 0 train pairs dropped (prompt too long), 6 truncated.
+preflight ok: masking={'n_checked_pairs': 4, 'completion_tokens_are_assistant_reply': True, 'prompt_tokens_excluded_from_loss': True, 'padding_excluded_from_loss': True} base=1f8df503972d lora_init=999ae8ecce25 trainable=18,464,768
+  0%|          | 0/12 [00:00<?, ?it/s]/Users/swapnilmittal/DRL_project/.venv/lib/python3.11/site-packages/torch/utils/data/dataloader.py:759: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  super().__init__(loader)
+  8%|▊         | 1/12 [03:53<42:53, 233.98s/it]                                                 8%|▊         | 1/12 [03:54<42:53, 233.98s/it] 17%|█▋        | 2/12 [05:15<24:05, 144.51s/it]                                                17%|█▋        | 2/12 [05:16<24:05, 144.51s/it] 25%|██▌       | 3/12 [06:30<16:55, 112.78s/it]                                                25%|██▌       | 3/12 [06:31<16:55, 112.78s/it] 33%|███▎      | 4/12 [10:25<21:25, 160.71s/it]                                                33%|███▎      | 4/12 [10:26<21:25, 160.71s/it] 42%|████▏     | 5/12 [12:05<16:13, 139.12s/it]                                                42%|████▏     | 5/12 [12:06<16:13, 139.12s/it] 50%|█████     | 6/12 [13:11<11:25, 114.25s/it]                                                50%|█████     | 6/12 [13:12<11:25, 114.25s/it]/Users/swapnilmittal/DRL_project/.venv/lib/python3.11/site-packages/torch/utils/data/dataloader.py:759: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  super().__init__(loader)
+{'loss': '0.6787', 'grad_norm': '9.21', 'learning_rate': '0', 'entropy': '1.059', 'num_tokens': '6900', 'logits/chosen': '-1.07', 'logits/rejected': '-0.4272', 'mean_token_accuracy': '0.7513', 'rewards/chosen': '0.02302', 'rewards/rejected': '-0.009134', 'rewards/accuracies': '0.5', 'rewards/margins': '0.03216', 'logps/chosen': '-377.6', 'logps/rejected': '-325.4', 'epoch': '0.08'}
+{'loss': '0.6983', 'grad_norm': '6.947', 'learning_rate': '2.5e-06', 'entropy': '1.044', 'num_tokens': '1.435e+04', 'logits/chosen': '-0.9347', 'logits/rejected': '-1.295', 'mean_token_accuracy': '0.7021', 'rewards/chosen': '0.00687', 'rewards/rejected': '0.01548', 'rewards/accuracies': '0.375', 'rewards/margins': '-0.008612', 'logps/chosen': '-261.5', 'logps/rejected': '-218.8', 'epoch': '0.16'}
+{'loss': '0.7065', 'grad_norm': '7.045', 'learning_rate': '5e-06', 'entropy': '1.111', 'num_tokens': '1.914e+04', 'logits/chosen': '-1.236', 'logits/rejected': '-1.275', 'mean_token_accuracy': '0.6723', 'rewards/chosen': '-0.01674', 'rewards/rejected': '0.007965', 'rewards/accuracies': '0.5', 'rewards/margins': '-0.02471', 'logps/chosen': '-225.8', 'logps/rejected': '-241.2', 'epoch': '0.24'}
+{'loss': '0.677', 'grad_norm': '6.941', 'learning_rate': '4.878e-06', 'entropy': '1.008', 'num_tokens': '2.537e+04', 'logits/chosen': '-1.079', 'logits/rejected': '-1.008', 'mean_token_accuracy': '0.7106', 'rewards/chosen': '0.006122', 'rewards/rejected': '-0.0292', 'rewards/accuracies': '0.5', 'rewards/margins': '0.03532', 'logps/chosen': '-298.3', 'logps/rejected': '-225.1', 'epoch': '0.32'}
+{'loss': '0.6948', 'grad_norm': '7.733', 'learning_rate': '4.523e-06', 'entropy': '0.8869', 'num_tokens': '3.153e+04', 'logits/chosen': '-0.6837', 'logits/rejected': '-0.9392', 'mean_token_accuracy': '0.7157', 'rewards/chosen': '-0.03092', 'rewards/rejected': '-0.02882', 'rewards/accuracies': '0.375', 'rewards/margins': '-0.002103', 'logps/chosen': '-417.1', 'logps/rejected': '-107.3', 'epoch': '0.4'}
+{'loss': '0.6904', 'grad_norm': '7.878', 'learning_rate': '3.969e-06', 'entropy': '0.8984', 'num_tokens': '3.714e+04', 'logits/chosen': '-1.474', 'logits/rejected': '-0.9029', 'mean_token_accuracy': '0.6869', 'rewards/chosen': '-0.0189', 'rewards/rejected': '-0.02591', 'rewards/accuracies': '0.5', 'rewards/margins': '0.00701', 'logps/chosen': '-225.2', 'logps/rejected': '-261.7', 'epoch': '0.48'}
+
+  0%|          | 0/16 [00:00<?, ?it/s][A
+ 12%|█▎        | 2/16 [00:03<00:21,  1.56s/it][A
+ 19%|█▉        | 3/16 [00:10<00:52,  4.00s/it][A
+ 25%|██▌       | 4/16 [00:14<00:46,  3.87s/it][A
+ 31%|███▏      | 5/16 [00:16<00:36,  3.28s/it][A
+ 38%|███▊      | 6/16 [00:22<00:43,  4.34s/it][A
+ 44%|████▍     | 7/16 [00:30<00:47,  5.29s/it][A
+ 50%|█████     | 8/16 [00:33<00:37,  4.66s/it][A
+ 56%|█████▋    | 9/16 [00:37<00:31,  4.52s/it][A
+ 62%|██████▎   | 10/16 [00:41<00:26,  4.43s/it][A
+ 69%|██████▉   | 11/16 [00:49<00:27,  5.50s/it][A
+ 75%|███████▌  | 12/16 [00:55<00:22,  5.63s/it][A
+ 81%|████████▏ | 13/16 [01:03<00:18,  6.17s/it][A
+ 88%|████████▊ | 14/16 [01:09<00:12,  6.33s/it][A
+ 94%|█████████▍| 15/16 [01:15<00:06,  6.20s/it][A
+100%|██████████| 16/16 [01:20<00:00,  5.87s/it][A                                               
+                                               [A 50%|█████     | 6/12 [14:41<11:25, 114.25s/it]
+100%|██████████| 16/16 [01:20<00:00,  5.87s/it][A
+                                               [A 58%|█████▊    | 7/12 [15:41<10:28, 125.67s/it]                                                58%|█████▊    | 7/12 [15:41<10:28, 125.67s/it] 67%|██████▋   | 8/12 [24:07<16:27, 246.87s/it]                                                67%|██████▋   | 8/12 [24:09<16:27, 246.87s/it]

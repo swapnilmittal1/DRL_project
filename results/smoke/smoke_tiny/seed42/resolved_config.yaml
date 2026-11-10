@@ -1,0 +1,75 @@
+experiment_id: smoke_tiny
+run_type: smoke
+seed: 42
+train: true
+model:
+  name_or_path: trl-internal-testing/tiny-Qwen2ForCausalLM-2.5
+  revision: edca82771e1fad8f0b7ce110ffe770c682043fec
+  dtype: float32
+  attn_implementation: sdpa
+quantization:
+  load_in_4bit: false
+data:
+  prep_config: configs/data/prep.yaml
+  selection_config: configs/data/selection.yaml
+  condition: E2_high_margin
+  eval_limit: 8
+lora:
+  r: 4
+  lora_alpha: 8
+  lora_dropout: 0.0
+  target_modules:
+  - q_proj
+  - v_proj
+dpo:
+  beta: 0.1
+  loss_type:
+  - sigmoid
+  max_length: 256
+  truncation_mode: keep_start
+training:
+  num_train_epochs: 1
+  learning_rate: 5.0e-06
+  lr_scheduler_type: cosine
+  warmup_steps: 0.1
+  per_device_train_batch_size: 2
+  per_device_eval_batch_size: 2
+  gradient_accumulation_steps: 1
+  gradient_checkpointing: false
+  logging_steps: 1
+  eval_strategy: steps
+  eval_steps: 2
+  save_strategy: 'no'
+  report_to: none
+  max_steps: 4
+checks:
+  max_dropped_pairs_final: 0
+  verify_reload: true
+smoke_test:
+  run_type: smoke
+  data:
+    eval_limit: 16
+  training:
+    max_steps: 12
+    eval_steps: 6
+resolved:
+  backend: mps
+  dtype: float32
+  qlora: false
+  config_file: configs/smoke/smoke_tiny.yaml
+  output_dir: /Users/swapnilmittal/DRL_project/results/smoke/smoke_tiny/seed42
+  train_manifest: data/manifests/smoke/E2_high_margin.jsonl
+  train_manifest_sha256: aad47293bd22265e82a196449f034c3a543e0f54bab51d951eea6be2126ab73f
+  n_train_pairs_manifest: 100
+  eval_manifest: data/manifests/eval/validation_n200_s0.jsonl
+  eval_manifest_sha256: c6d3e4dbee472fb13464cf395488f5ed8fa0babd71854dbec9fcedc8064a2e6a
+  n_eval_pairs: 8
+  dataset_name: argilla/ultrafeedback-binarized-preferences-cleaned
+  dataset_revision: 770076f077c4c5e298498fa32f804857f46d5134
+  split_manifest_sha256:
+    dropped.csv: 51dc8d18572605880c8d26f53b6d5b181c216955c01df6026bbcda9f23adaccf
+    test.csv: 9918f040bba400ce6cb57c82872986711be80632c96432003362530abc9b1244
+    train.csv: 458c6aaaf6d6703b59067a92745f245c253a72b5184bc0cb29654373a7b3d80e
+    validation.csv: 4955bbd2d7134a522822eb041e50e583d1586a250182f8f35204418e83b7618d
+  selection_seed: 0
+  eval_seed: 0

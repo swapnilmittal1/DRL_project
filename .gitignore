@@ -31,11 +31,7 @@ checkpoint-*/
 *.ckpt
 *.gguf
 
-# Logs and smoke-test outputs (final run metadata under results/final/ IS tracked)
-logs/*
-!logs/.gitkeep
-results/smoke/
-data/manifests/smoke/
+# Run records (configs, metrics, histories, logs) ARE tracked; adapter weights and trainer scratch are not.
 results/**/adapter/
 results/**/trainer/
 

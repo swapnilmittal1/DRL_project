@@ -1,0 +1,165 @@
+{
+  "status": "completed",
+  "experiment_id": "smoke_tiny",
+  "condition": "E2_high_margin",
+  "run_type": "smoke",
+  "smoke_test": false,
+  "started_unix": 1794270160.486936,
+  "seeds": {
+    "training_seed": 42,
+    "data_seed": 42,
+    "selection_seed": 0,
+    "eval_subset_seed": 0
+  },
+  "data": {
+    "train_manifest": "data/manifests/smoke/E2_high_margin.jsonl",
+    "train_manifest_sha256": "aad47293bd22265e82a196449f034c3a543e0f54bab51d951eea6be2126ab73f",
+    "n_train_pairs_manifest": 100,
+    "eval_manifest": "data/manifests/eval/validation_n200_s0.jsonl",
+    "eval_manifest_sha256": "c6d3e4dbee472fb13464cf395488f5ed8fa0babd71854dbec9fcedc8064a2e6a",
+    "n_eval_pairs": 8,
+    "dataset_name": "argilla/ultrafeedback-binarized-preferences-cleaned",
+    "dataset_revision": "770076f077c4c5e298498fa32f804857f46d5134",
+    "split_manifest_sha256": {
+      "dropped.csv": "51dc8d18572605880c8d26f53b6d5b181c216955c01df6026bbcda9f23adaccf",
+      "test.csv": "9918f040bba400ce6cb57c82872986711be80632c96432003362530abc9b1244",
+      "train.csv": "458c6aaaf6d6703b59067a92745f245c253a72b5184bc0cb29654373a7b3d80e",
+      "validation.csv": "4955bbd2d7134a522822eb041e50e583d1586a250182f8f35204418e83b7618d"
+    },
+    "selection_seed": 0,
+    "eval_seed": 0
+  },
+  "model": {
+    "name_or_path": "trl-internal-testing/tiny-Qwen2ForCausalLM-2.5",
+    "revision": "edca82771e1fad8f0b7ce110ffe770c682043fec",
+    "dtype": "float32",
+    "qlora": false,
+    "chat_template_sha256": "cd8e9439f0570856fd70470bf8889ebd8b5d1107207f67a5efb46e342330527f"
+  },
+  "reference_policy": "frozen base checkpoint (LoRA adapter disabled); same pinned revision and dtype in every run",
+  "data_lengths": {
+    "train": {
+      "n_pairs_in": 100,
+      "n_pairs_after_trl_filter": 76,
+      "n_pairs_dropped_prompt_too_long": 24,
+      "n_pairs_truncated": 55,
+      "n_chosen_truncated": 50,
+      "n_rejected_truncated": 25,
+      "tokens_per_epoch": 31198,
+      "max_untruncated_sequence": 931
+    },
+    "eval": {
+      "n_pairs_in": 8,
+      "n_pairs_after_trl_filter": 6,
+      "n_pairs_dropped_prompt_too_long": 2,
+      "n_pairs_truncated": 6,
+      "n_chosen_truncated": 5,
+      "n_rejected_truncated": 4,
+      "tokens_per_epoch": 2762,
+      "max_untruncated_sequence": 890
+    }
+  },
+  "completion_masking": {
+    "n_checked_pairs": 4,
+    "completion_tokens_are_assistant_reply": true,
+    "prompt_tokens_excluded_from_loss": true,
+    "padding_excluded_from_loss": true
+  },
+  "initial_state": {
+    "base_weights_sha256": "13949bcb9daf45a432a787bd18df3a5eac69c3b30c492b0ff04c3b97ae2cf83d",
+    "lora_weights_sha256": "d46887ba7bbcac1f2f731f417045c64060ed6c1a75af22ddafe92dce3f2860e5",
+    "n_base_params": 2436264,
+    "n_lora_params": 512,
+    "n_trainable_params": 512,
+    "probe_ref_logps": [
+      -2613.56689453125,
+      -2207.302734375,
+      -2613.3154296875,
+      -2207.690673828125
+    ],
+    "probe_policy_logps": [
+      -2613.56689453125,
+      -2207.302734375,
+      -2613.3154296875,
+      -2207.690673828125
+    ],
+    "initial_policy_equals_reference": true
+  },
+  "effective_batch_pairs": 2,
+  "preflight_s": 4.1,
+  "global_step": 4,
+  "epoch": 0.10526315789473684,
+  "train_runtime_s": 5.2,
+  "tokens_processed": 3656,
+  "pairs_processed": 8,
+  "losses_finite": true,
+  "final_state": {
+    "base_weights_sha256": "13949bcb9daf45a432a787bd18df3a5eac69c3b30c492b0ff04c3b97ae2cf83d",
+    "lora_weights_sha256": "7608ef422f6fe5ce7f57f1cc789a5c00d82c0d17df36de9478dbc95620597067",
+    "n_base_params": 2436264,
+    "n_lora_params": 512,
+    "n_trainable_params": 512,
+    "probe_ref_logps": [
+      -2613.56689453125,
+      -2207.302734375,
+      -2613.3154296875,
+      -2207.690673828125
+    ],
+    "probe_policy_logps": [
+      -2613.56689453125,
+      -2207.302734375,
+      -2613.3154296875,
+      -2207.690673828125
+    ],
+    "base_weights_unchanged": true,
+    "lora_weights_changed": true
+  },
+  "peak_memory": {
+    "process_peak_rss_gb": 0.740234375,
+    "gpu_mem_allocated_gb": 0.009301185607910156,
+    "gpu_mem_driver_gb": 2.0525360107421875
+  },
+  "adapter_files_sha256": {
+    "README.md": "49a2462e3d505ab8d4190e7af50e32fbcff4e1c3fbfa8ed0301f812f0d7e73a2",
+    "adapter_config.json": "18783c89324fc159e62b23c85e5463b99d5eff6d4743a9096dc79572831eccc2",
+    "adapter_model.safetensors": "b10f0b9048078025840bf2a48f63f6bd2c55373c4ceb224e04f0555c60cd3938",
+    "chat_template.jinja": "cd8e9439f0570856fd70470bf8889ebd8b5d1107207f67a5efb46e342330527f",
+    "tokenizer.json": "3fd169731d2cbde95e10bf356d66d5997fd885dd8dbb6fb4684da3f23b2585d8",
+    "tokenizer_config.json": "04b1682c59acbd057f4c9072297faa73d56fc9de053094c659cdb4c464f58f86",
+    "training_args.bin": "7cca8d59e1c27120aa0bdfa316a5a3182feb12403b41b2831872b2e108fe28fa"
+  },
+  "reload_check": {
+    "lora_param_names_match": true,
+    "max_abs_lora_weight_diff": 0.0,
+    "reloaded_policy_logps": [
+      -2613.56689453125,
+      -2207.302734375,
+      -2613.3154296875,
+      -2207.690673828125
+    ],
+    "trained_policy_logps": [
+      -2613.56689453125,
+      -2207.302734375,
+      -2613.3154296875,
+      -2207.690673828125
+    ],
+    "reloaded_ref_logps": [
+      -2613.56689453125,
+      -2207.302734375,
+      -2613.3154296875,
+      -2207.690673828125
+    ],
+    "trained_ref_logps": [
+      -2613.56689453125,
+      -2207.302734375,
+      -2613.3154296875,
+      -2207.690673828125
+    ],
+    "rel_tolerance": 0.001,
+    "policy_logps_match": true,
+    "ref_logps_match": true,
+    "passed": true
+  },
+  "total_runtime_s": 10.3,
+  "finished_unix": 1794270170.955783
+}

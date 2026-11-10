@@ -1,0 +1,91 @@
+{
+  "status": "failed",
+  "experiment_id": "E1_random",
+  "condition": "E1_random",
+  "run_type": "smoke",
+  "smoke_test": true,
+  "started_unix": 1794271661.894623,
+  "seeds": {
+    "training_seed": 42,
+    "data_seed": 42,
+    "selection_seed": 0,
+    "eval_subset_seed": 0
+  },
+  "data": {
+    "train_manifest": "data/manifests/smoke/E1_random.jsonl",
+    "train_manifest_sha256": "ae40c770ddb432575d89a5cac5eae9b64651312eafa36e4c71c153e1026c5bc3",
+    "n_train_pairs_manifest": 100,
+    "eval_manifest": "data/manifests/eval/validation_n200_s0.jsonl",
+    "eval_manifest_sha256": "c6d3e4dbee472fb13464cf395488f5ed8fa0babd71854dbec9fcedc8064a2e6a",
+    "n_eval_pairs": 16,
+    "dataset_name": "argilla/ultrafeedback-binarized-preferences-cleaned",
+    "dataset_revision": "770076f077c4c5e298498fa32f804857f46d5134",
+    "split_manifest_sha256": {
+      "dropped.csv": "51dc8d18572605880c8d26f53b6d5b181c216955c01df6026bbcda9f23adaccf",
+      "test.csv": "9918f040bba400ce6cb57c82872986711be80632c96432003362530abc9b1244",
+      "train.csv": "458c6aaaf6d6703b59067a92745f245c253a72b5184bc0cb29654373a7b3d80e",
+      "validation.csv": "4955bbd2d7134a522822eb041e50e583d1586a250182f8f35204418e83b7618d"
+    },
+    "selection_seed": 0,
+    "eval_seed": 0
+  },
+  "model": {
+    "name_or_path": "Qwen/Qwen2.5-1.5B-Instruct",
+    "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+    "dtype": "bfloat16",
+    "qlora": false,
+    "chat_template_sha256": "cd8e9439f0570856fd70470bf8889ebd8b5d1107207f67a5efb46e342330527f"
+  },
+  "reference_policy": "frozen base checkpoint (LoRA adapter disabled); same pinned revision and dtype in every run",
+  "data_lengths": {
+    "train": {
+      "n_pairs_in": 100,
+      "n_pairs_after_trl_filter": 100,
+      "n_pairs_dropped_prompt_too_long": 0,
+      "n_pairs_truncated": 6,
+      "n_chosen_truncated": 5,
+      "n_rejected_truncated": 2,
+      "tokens_per_epoch": 82906,
+      "max_untruncated_sequence": 1195
+    },
+    "eval": {
+      "n_pairs_in": 16,
+      "n_pairs_after_trl_filter": 16,
+      "n_pairs_dropped_prompt_too_long": 0,
+      "n_pairs_truncated": 1,
+      "n_chosen_truncated": 0,
+      "n_rejected_truncated": 1,
+      "tokens_per_epoch": 17826,
+      "max_untruncated_sequence": 1179
+    }
+  },
+  "completion_masking": {
+    "n_checked_pairs": 4,
+    "completion_tokens_are_assistant_reply": true,
+    "prompt_tokens_excluded_from_loss": true,
+    "padding_excluded_from_loss": true
+  },
+  "initial_state": {
+    "base_weights_sha256": "1f8df503972d032231d07e238e197a48dc8c0e59480592f9aa93ac453c9d4d9b",
+    "lora_weights_sha256": "999ae8ecce254425ab346a1ce42961ea9f569e449cc8c799469b234e23398f0b",
+    "n_base_params": 1543714304,
+    "n_lora_params": 18464768,
+    "n_trainable_params": 18464768,
+    "probe_ref_logps": [
+      -228.7550048828125,
+      -192.95347595214844,
+      -816.6224365234375,
+      -316.60015869140625
+    ],
+    "probe_policy_logps": [
+      -228.7550048828125,
+      -192.95347595214844,
+      -816.6224365234375,
+      -316.60015869140625
+    ],
+    "initial_policy_equals_reference": true
+  },
+  "effective_batch_pairs": 8,
+  "preflight_s": 19.5,
+  "error": "killed manually (SIGKILL) at optimizer step 8/12: machine out of memory/swap-thrashing"
+}
